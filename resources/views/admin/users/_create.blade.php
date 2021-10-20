@@ -18,7 +18,7 @@
                     <select name="role" class="form-control" id="setting-input-7" required>
                         <option disabled selected>-- Выберите роль --</option>
                         @foreach($roles as $role)
-                            <option value="{{$role['id']}}" @if($role['id']==old('role')) selected @endif>{{$role['name']}}</option>
+                            <option value="{{$role['id']}}" @if($role['id']==old('role')) selected @endif>{{$role['head']}}</option>
                         @endforeach
                     </select>
                 </div>

@@ -7,6 +7,7 @@ use App\Interfaces\ContentAction;
 use App\Helpers\Validation;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Models\Categories;
+use Illuminate\Support\Facades\Auth;
 
 class PostService implements ContentAction
 {
@@ -56,7 +57,8 @@ class PostService implements ContentAction
     public static function delete(int $id, object $model)
     {
         try {
-            $model::findOrFail($id)->delete();
+            $post = $model::findOrFail($id);
+            $post->delete();
             return redirect()->back()->with('status', 'Запись успешно удалена');
         } catch(ModelNotFoundException $e){
             return redirect()->back()->withErrors($e->getMessage());

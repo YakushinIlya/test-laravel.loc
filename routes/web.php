@@ -21,13 +21,14 @@ Route::group([
 ], function(){
     Route::match(['get', 'post'],'/register', 'RegisterController@register')->name('register');
     Route::match(['get', 'post'], '/login', 'LoginController@login')->name('login');
-    Route::get('/logout', 'AuthController@logout')->name('logout');
+    Route::get('/logout', 'LoginController@logout')->name('logout');
 });
 
 //Админка
 Route::group([
-    'prefix'    => 'admin',
-    'namespace' => 'Admin',
+    'prefix'     => 'admin',
+    'namespace'  => 'Admin',
+    'middleware' => 'auth',
 ], function(){
     Route::get('/dashboard', 'DashboardController@index')->name('admin');
 

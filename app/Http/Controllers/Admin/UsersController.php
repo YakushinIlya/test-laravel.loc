@@ -17,6 +17,7 @@ class UsersController extends Controller
 
     public function index()
     {
+        $this->authorize('viewAny', User::class);
         $this->data['title'] = 'Пользователи';
         $this->data['users'] = UserService::getAll(10, $this->model);
 

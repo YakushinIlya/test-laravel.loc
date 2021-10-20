@@ -25,6 +25,7 @@ class PostsController extends Controller
 
     public function create(Request $request)
     {
+        $this->authorize('create', Posts::class);
         if($request->isMethod('post')){
             return PostService::create($request, $this->model);
         }
