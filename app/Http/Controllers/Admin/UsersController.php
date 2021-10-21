@@ -27,10 +27,10 @@ class UsersController extends Controller
 
     public function create(Request $request)
     {
+        $this->authorize('create', User::class);
         if($request->isMethod('post')){
             return UserService::create($request, $this->model);
         }
-
         $this->data['title'] = 'Создание пользователя';
         $this->data['roles'] = Roles::all();
 
@@ -39,6 +39,7 @@ class UsersController extends Controller
 
     public function delete(Request $request)
     {
+        $this->authorize('delete', User::class);
         return UserService::delete($request->id, $this->model);
     }
 }
