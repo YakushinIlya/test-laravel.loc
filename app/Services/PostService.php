@@ -92,7 +92,7 @@ class PostService implements ContentAction
                 }
                 $post->update([
                     'head'        => $data['head'],
-                    'image'       => $image??'',
+                    'image'       => $image??$post['image'],
                     'category_id' => $data['category'],
                     'user_id'     => Auth::user()->id,
                 ]);
