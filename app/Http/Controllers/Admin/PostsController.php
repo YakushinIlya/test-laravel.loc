@@ -51,8 +51,10 @@ class PostsController extends Controller
 
     public function update(Request $request)
     {
+        $post = PostService::getId($request->id, $this->model);
+        $this->authorize('update', $post);
         $this->data['title']      = 'Редактировать статью';
-        $this->data['post']       = PostService::getId($request->id, $this->model);
+        $this->data['post']       = $post;
         $this->data['categories'] = $this->modelCategory->all();
         if($request->isMethod('put')){
             return PostService::update($request, $this->model);
@@ -62,6 +64,8 @@ class PostsController extends Controller
 
     public function delete(Request $request)
     {
-        return PostService::delete($request->id, $this->model);
+        $post = $this->model::find($request->id);
+        $this->authorize('delete', $post);
+        return PostService::delete($request->id, $post);
     }
 }

@@ -42,7 +42,7 @@ class UserService implements ContentAction
         }
     }
 
-    public static function update(int $id, object $request, object $model)
+    public static function update(object $request, object $model)
     {
         // TODO: Implement update() method.
     }

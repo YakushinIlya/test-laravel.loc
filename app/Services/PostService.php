@@ -103,11 +103,11 @@ class PostService implements ContentAction
         }
     }
 
-    public static function delete(int $id, object $model)
+    public static function delete(int $id, object $post)
     {
         try {
-            $post = $model::findOrFail($id);
             $post->delete();
+            unlink($post['image']);
             return redirect()->back()->with('status', 'Запись успешно удалена');
         } catch(ModelNotFoundException $e){
             return redirect()->back()->withErrors($e->getMessage());
