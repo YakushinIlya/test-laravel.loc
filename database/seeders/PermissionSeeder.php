@@ -9,19 +9,28 @@ class PermissionSeeder extends Seeder
 {
     private $data = [
         [
-            'name'     => 'view_admin',
+            'name' => 'view_admin',
         ],
         [
-            'name'     => 'create_post',
+            'name' => 'view_posts',
         ],
         [
-            'name'     => 'delete_post',
+            'name' => 'create_post',
         ],
         [
-            'name'     => 'create_user',
+            'name' => 'update_post',
         ],
         [
-            'name'     => 'delete_user',
+            'name' => 'delete_post',
+        ],
+        [
+            'name' => 'view_users',
+        ],
+        [
+            'name' => 'create_user',
+        ],
+        [
+            'name' => 'delete_user',
         ],
     ];
 

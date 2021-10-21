@@ -12,11 +12,16 @@ class Posts extends Model
     protected $table = 'posts';
 
     protected $fillable = [
-        'head', 'image', 'categories_id'
+        'head', 'image', 'category_id', 'user_id'
     ];
 
     public function categories()
     {
-        return $this->belongsTo(Categories::class);
+        return $this->belongsTo(Categories::class, 'category_id', 'id');
+    }
+
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }

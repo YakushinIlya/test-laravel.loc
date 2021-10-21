@@ -41,6 +41,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function posts()
+    {
+        return $this->hasMany(Posts::class);
+    }
+
     public function role()
     {
         return $this->belongsToMany('App\Models\Roles', 'user_role', 'user_id', 'role_id');
@@ -48,6 +53,6 @@ class User extends Authenticatable
 
     public function child()
     {
-        return $this->belongsToMany('App\Models\User', 'manager_employee', 'child_id', 'parent_id');
+        return $this->belongsToMany('App\Models\User', 'manager_employee','parent_id', 'child_id');
     }
 }

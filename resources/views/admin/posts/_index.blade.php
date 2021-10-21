@@ -24,15 +24,17 @@
                                 <td class="cell">
                                     <img src="{{$post["image"]}}" width="50px">
                                 </td>
-                                <td class="cell">{{$post["head"]}}</td>
+                                <td class="cell">
+                                    <a href="{{route('post.view', ['id'=>$post["id"]])}}">{{$post["head"]}}</a>
+                                </td>
                                 <td class="cell">{{$post->categories->head}}</td>
                                 <td class="cell text-center">
+                                    <a href="{{route('admin.posts.update', ['id'=>$post["id"]])}}" class="btn-sm btn-warning btn-block mb-2">Редактировать</a>
                                     <form action="{{route('admin.posts.delete', ['id'=>$post["id"]])}}" method="POST">
                                         @method('DELETE')
                                         @csrf
                                         <button type="submit" class="btn-sm btn-danger btn-block">Удалить</button>
                                     </form>
-
                                 </td>
                             </tr>
                         @endforeach

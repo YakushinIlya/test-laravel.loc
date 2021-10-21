@@ -17,8 +17,10 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->string('head');
             $table->string('image');
-            $table->unsignedBigInteger('categories_id')->unsignet()->default(0);
-            $table->foreign('categories_id')->references('id')->on('categories');
+            $table->unsignedBigInteger('category_id')->unsignet()->default(0);
+            $table->foreign('category_id')->references('id')->on('categories');
+            $table->unsignedBigInteger('user_id')->unsignet()->default(0);
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

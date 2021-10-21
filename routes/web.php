@@ -15,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index')->name('home');
 
+//Контент
+Route::get('/post/{id}', 'PostController@view')->name('post.view');
+Route::get('/category/{id}', 'PostController@category')->name('post.category');
+Route::get('/author/{id}', 'PostController@author')->name('post.author');
+
 //Авторизация
 Route::group([
     'namespace' => 'User',
@@ -41,5 +46,6 @@ Route::group([
     //Записи
     Route::get('/posts', 'PostsController@index')->name('admin.posts');
     Route::match(['get', 'post'],'/posts/create', 'PostsController@create')->name('admin.posts.create');
+    Route::match(['get', 'put'], '/posts/update/{id}', 'PostsController@update')->name('admin.posts.update');
     Route::delete('/posts/delete/{id}', 'PostsController@delete')->name('admin.posts.delete');
 });
